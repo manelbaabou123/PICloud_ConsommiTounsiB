@@ -20,7 +20,8 @@ public class Client {
     @Column
     private String name;
 
-
+    @ManyToMany
+    private List<Cagnotte> cagnottes;
 
     @OneToMany(mappedBy = "sender")
     private List<Message> messagesSent;

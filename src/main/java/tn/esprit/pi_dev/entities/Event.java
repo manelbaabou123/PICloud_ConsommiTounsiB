@@ -21,8 +21,8 @@ public class Event {
     @ManyToOne
     private Admin fondateur;
 
-    @OneToOne
-    private  Cagnotte cagnote;
+    @ManyToOne
+    private  Cagnotte cagnotte;
 
     @Column
     private float cout;

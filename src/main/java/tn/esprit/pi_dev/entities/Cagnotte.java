@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,7 +23,10 @@ public class Cagnotte {
 
     private Date date;
 
-    @OneToOne
-    private Event event;
+    @OneToMany(mappedBy = "cagnotte")
+    private List<Event> events;
+
+    @ManyToMany(mappedBy = "cagnottes")
+    private List<Client> clients;
 
 }
