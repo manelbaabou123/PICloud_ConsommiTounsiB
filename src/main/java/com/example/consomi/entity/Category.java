@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,16 +25,11 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCategory;
 	
-	@Column(name = "name")
+	@Column(name = "name",unique = true)
 	private String nameCategory;
 	
 	@OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
-	private List<Product> products;
-	
-	
-	
-	
-	
+	private Set<Product> products;
 	
 
 }
