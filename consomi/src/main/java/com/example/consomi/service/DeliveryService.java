@@ -16,5 +16,5 @@ public interface DeliveryService {
     public List<Delivery> getCurrentDeliveries();
     public List<Delivery> getHistoryDeliveries();
 
-    List<Delivery> getCurrentDeliveriesForDeliveryMan(Integer idDeliveryMan);
+    List<Delivery> getCurrentDeliveriesForDeliveryMen(Integer idDeliveryMen);
 }

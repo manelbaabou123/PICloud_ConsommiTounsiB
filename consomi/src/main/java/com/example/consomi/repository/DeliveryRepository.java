@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface DeliveryRepository extends CrudRepository<Delivery, Long> {
     @Query("select d from Delivery d where d.etat != :done and d.livreur.id = :idLivreur ")
-    List<Delivery> getCurrentDeliveriesForDeliveryMan(@Param("done") DeliveryStatus etat, @Param("idLivreur") int id);
+    List<Delivery> getCurrentDeliveriesForDeliveryMen(@Param("done") DeliveryStatus etat, @Param("idLivreur") int id);
 
 
     @Query("select d from Delivery d where d.etat != :done")

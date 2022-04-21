@@ -62,8 +62,8 @@ public class DeliveryServiceImpl implements DeliveryService{
 
 
 
-    public List<Delivery> getCurrentDeliveriesForDeliveryMan(Integer idDeliveryMan)
+    public List<Delivery> getCurrentDeliveriesForDeliveryMen(Integer idDeliveryMen)
     {
-        return RepDelivery.getCurrentDeliveriesForDeliveryMan(DeliveryStatus.done,idDeliveryMan);
+        return RepDelivery.getCurrentDeliveriesForDeliveryMen(DeliveryStatus.done, idDeliveryMen);
     }
 }

@@ -62,9 +62,9 @@ public class DeliveryController {
     }
 
 
-    @GetMapping("/getCurrentDeliveriesForDeliveryMan/{id}")
+    @GetMapping("/getCurrentDeliveriesForDeliveryMen/{id}")
     @ResponseBody
-    public List<Delivery> getCurrentDeliveriesForDeliveryMan(@PathVariable("id") int idDeliveryMan){
-        return deliveryService.getCurrentDeliveriesForDeliveryMan(idDeliveryMan);
+    public List<Delivery> getCurrentDeliveriesForDeliveryMen(@PathVariable("id") int idDeliveryMen){
+        return deliveryService.getCurrentDeliveriesForDeliveryMen(idDeliveryMen);
     }
 }
