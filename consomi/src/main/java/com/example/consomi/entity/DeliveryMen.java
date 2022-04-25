@@ -1,5 +1,6 @@
 package com.example.consomi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import com.example.consomi.enumerated.DeliveryMenStatus;
@@ -36,14 +37,15 @@ public class DeliveryMen implements Serializable  {
 
 
 	@OneToMany(mappedBy="livreur")
+	@JsonManagedReference
 	private List<Delivery> livraisons;
 
-	@JsonManagedReference
-	public List<Delivery> getLivraisons() {
-		return livraisons;
-	}
+	//@JsonManagedReference
+	//public List<Delivery> getLivraisons() {
+	//	return livraisons;
+	//}
 
-	public void setLivraisons(List<Delivery> livraisons) {
-		this.livraisons = livraisons;
-	}
+	//public void setLivraisons(List<Delivery> livraisons) {
+	//	this.livraisons = livraisons;
+	//}
 }

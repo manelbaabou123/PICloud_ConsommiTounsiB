@@ -6,15 +6,21 @@ import java.util.List;
 
 public interface DeliveryService {
 
-    Delivery AjouterDelivery(Delivery livraison);
-    void DeleteDelivery(Delivery livraison);
+    Delivery AddDelivery(Delivery delivery);
     void DeleteDelivery(Long idDelivery);
+    Delivery UpdateDelivery(Delivery delivery);
     List<Delivery> getAllDelivery();
     public String getDeliveryById(Long idDelivery);
-    //Delivery getDeliveryById(Long idDelivery);
     public String getDeliveryStatus(Long idDelivery );
     public List<Delivery> getCurrentDeliveries();
     public List<Delivery> getHistoryDeliveries();
 
     List<Delivery> getCurrentDeliveriesForDeliveryMen(Integer idDeliveryMen);
+
+
+
+    public long getTempsAttenteDelivery(Long idDelivery);
+    public long getTempsAttenteMoyen();
+
+
 }

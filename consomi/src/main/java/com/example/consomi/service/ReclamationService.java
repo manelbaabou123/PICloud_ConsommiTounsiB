@@ -5,8 +5,8 @@ import com.example.consomi.entity.Reclamation;
 import java.util.List;
 
 public interface ReclamationService {
-    Reclamation AjouterReclamation(Reclamation reclamation);
-    void DeleteReclamation(Reclamation reclamation);
+    Reclamation addReclamation(Reclamation reclamation);
     void DeleteReclamation(Integer idRec);
     List<Reclamation> getAllReclamation();
+    public List<Reclamation> getAllReclamations();
 }

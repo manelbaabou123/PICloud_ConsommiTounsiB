@@ -8,63 +8,88 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/Delivery")
 public class DeliveryController {
     @Autowired
     DeliveryService deliveryService;
 
-    @GetMapping("/Delivery")
+    //@GetMapping("/Delivery")
+    @GetMapping("/all")
     @ResponseBody
     public List<Delivery> getAllDelivery(){
         List<Delivery> deliveryList = deliveryService.getAllDelivery();
         return deliveryList;
     }
 
-    @PostMapping("/AjouterDelivery")
+    @PostMapping("/add")
     @ResponseBody
-    public Delivery AjouterDelivery(@RequestBody Delivery livraison){
-        return deliveryService.AjouterDelivery(livraison);
+    public Delivery AddDelivery(@RequestBody Delivery delivery){
+        return deliveryService.AddDelivery(delivery);
     }
 
-    @DeleteMapping("/DeleteDelivery/{id}")
+    @PutMapping("/Update")
+    @ResponseBody
+    public Delivery UpdateDelivery(@RequestBody Delivery delivery){
+        return deliveryService.UpdateDelivery(delivery);
+    }
+
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
     public void DeleteDelivery(@PathVariable("id") Long idDelivery){
         deliveryService.DeleteDelivery(idDelivery);
     }
 
-    @GetMapping("/getDeliveryStatus/{id}")
+    @GetMapping("/getStatus/{id}")
     @ResponseBody
     public String getDeliveryStatus(@PathVariable("id") Long idDelivery){
         return deliveryService.getDeliveryStatus(idDelivery);
     }
 
-    @GetMapping("/getDeliveryById/{id}")
+    @GetMapping("/find/{id}")
     @ResponseBody
     public String getDeliveryById(@PathVariable("id") Long idDelivery){
         return deliveryService.getDeliveryById(idDelivery);
     }
 
-    @GetMapping("/getCurrentDeliveries")
+    @GetMapping("/getCurrent")
     @ResponseBody
     public List<Delivery> getCurrentDeliveries(){
         return deliveryService.getCurrentDeliveries();
     }
 
-    @GetMapping("/getHistoryDeliveries")
+    @GetMapping("/getHistory")
     @ResponseBody
     public List<Delivery> getHistoryDeliveries(){
         return deliveryService.getHistoryDeliveries();
     }
 
-    @GetMapping("/countHistoryDeliveries")
+    @GetMapping("/countHistory")
     @ResponseBody
     public int countHistoryDeliveries(){
         return deliveryService.getHistoryDeliveries().size();
     }
-
 
     @GetMapping("/getCurrentDeliveriesForDeliveryMen/{id}")
     @ResponseBody
     public List<Delivery> getCurrentDeliveriesForDeliveryMen(@PathVariable("id") int idDeliveryMen){
         return deliveryService.getCurrentDeliveriesForDeliveryMen(idDeliveryMen);
     }
+
+
+
+    @GetMapping("/getTempsAttente/{idDelivery}")
+    @ResponseBody
+    public long getTempsAttenteDelivery(@PathVariable("idDelivery") Long idDelivery){
+        return deliveryService.getTempsAttenteDelivery(idDelivery);
+    }
+
+    @GetMapping("/getTempsAttenteMoyen")
+    @ResponseBody
+    public long getTempsAttenteMoyen(){
+        return deliveryService.getTempsAttenteMoyen();
+    }
+
+
+
+
 }

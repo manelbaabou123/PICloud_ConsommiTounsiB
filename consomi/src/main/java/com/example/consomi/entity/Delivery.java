@@ -3,10 +3,8 @@ package com.example.consomi.entity;
 
 import com.example.consomi.enumerated.MeansOfTransportDelivery;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 import com.example.consomi.enumerated.DeliveryStatus;
 
 import javax.persistence.*;
@@ -18,6 +16,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 //@Component
 @Table(name = "DELIVERY")
@@ -57,6 +56,7 @@ public class Delivery implements Serializable {
 
 
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "idDeliveryMen")
 	private DeliveryMen livreur;
 
@@ -66,20 +66,20 @@ public class Delivery implements Serializable {
 	@OneToOne(mappedBy = "livraison")
 	private Reclamation reclamation;
 
-	@JsonBackReference
-	public DeliveryMen getLivreur() {
-		return livreur;
-	}
+	//@JsonBackReference
+	//public DeliveryMen getLivreur() {
+	//	return livreur;
+	//}
 
-	public void setLivreur(DeliveryMen livreur) {
-		this.livreur = livreur;
-	}
+	//public void setLivreur(DeliveryMen livreur) {
+	//	this.livreur = livreur;
+	//}
 
-	public DeliveryStatus getEtat() {
-		return etat;
-	}
+	//public DeliveryStatus getEtat() {
+	//	return etat;
+	//}
 
-	public void setEtat(DeliveryStatus etat) {
-		this.etat = etat;
-	}
+	//public void setEtat(DeliveryStatus etat) {
+	//	this.etat = etat;
+	//}
 }
