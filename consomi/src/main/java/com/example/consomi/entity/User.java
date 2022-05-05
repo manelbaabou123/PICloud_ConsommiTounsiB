@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "USER")
 public class User implements Serializable {
 	/**
 	 * 
@@ -38,8 +37,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="client")
 	private List<Product> produits;
 
-	@OneToOne(mappedBy = "admin")
-	private Event event ;
+	@OneToMany
+	private List<Event> event ;
+	@OneToMany (cascade = CascadeType.ALL,mappedBy = "client")
+	private List<Cagnotte> cagnotte ;
 
 	@OneToMany(mappedBy="client")
 	private List<Comment> comments;

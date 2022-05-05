@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table( name = "CAGNOTTE")
+
 public class Cagnotte implements Serializable{
 
 	/**
@@ -23,13 +23,16 @@ public class Cagnotte implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCgnote;
 
-	private int mongton;
+	private int montant;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	
-	@OneToOne(mappedBy = "cagnotte")
+
+	@ManyToOne
 	private Event event;
+
+	@ManyToOne
+	private User client ;
 	
 	
 	
