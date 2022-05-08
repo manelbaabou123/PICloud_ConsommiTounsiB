@@ -4,14 +4,17 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table( name = "CAGNOTTE")
+
 public class Cagnotte implements Serializable{
 
 	/**
@@ -23,15 +26,23 @@ public class Cagnotte implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCgnote;
 
-	private int mongton;
+	private int montant;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	
+
 	@OneToOne(mappedBy = "cagnotte")
 	private Event event;
-	
-	
+
+	@ManyToMany
+	private List<User>  clients ;
+
+	/*@ManyToMany
+	@JoinTable(name = "cagnotte_participants",
+			joinColumns = @JoinColumn(name = "cagnotte_id"),
+			inverseJoinColumns = @JoinColumn(name = "users_id"))
+	private List<User> users = new ArrayList<>();
+	*/
 	
 
 }

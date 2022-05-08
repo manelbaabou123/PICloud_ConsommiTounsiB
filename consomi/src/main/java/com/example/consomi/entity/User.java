@@ -1,10 +1,12 @@
 package com.example.consomi.entity;
 
 import com.example.consomi.enumerated.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter 
@@ -13,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "USER")
 public class User implements Serializable {
 	/**
 	 * 
@@ -38,8 +39,12 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="client")
 	private List<Product> produits;
 
-	@OneToOne(mappedBy = "admin")
-	private Event event ;
+	@OneToMany (cascade = CascadeType.ALL)
+	private List<Event> event ;
+
+	@ManyToMany (cascade = CascadeType.ALL,mappedBy = "clients")
+	@JsonIgnore
+	private List<Cagnotte> cagnotte ;
 
 	@OneToMany(mappedBy="client")
 	private List<Comment> comments;
@@ -53,7 +58,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="receiver")
 	private List<Message> MessagesReceiver;
 
-
+	//Hedhi pour savoir l'utilisateur connecté
+	@OneToMany(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "user_id")
+	private List<Event> events = new ArrayList<>();
 
 	
 }

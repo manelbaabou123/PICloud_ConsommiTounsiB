@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -16,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 //@Component
-@Table(name = "EVENT")
+
 public class Event implements Serializable{
 	/**
 	 * 
@@ -30,24 +32,28 @@ public class Event implements Serializable{
 	private float cout;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name= "date")
+
 	private Date dateEvent;
 
 	private String titre;
 
 	private String description;
 
-	@OneToOne
-	private User admin;
 
 	@OneToOne
 	private Cagnotte cagnotte;
 
-	public Event(int id)
+	@ManyToMany
+	@JoinTable(name = "event_participants",
+			joinColumns = @JoinColumn(name = "event_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> participants = new ArrayList<>();
+
+	/*public Event(int id)
 	{
 		this.idEvent=id;
 	}
-
+*/
 	
 	
 
