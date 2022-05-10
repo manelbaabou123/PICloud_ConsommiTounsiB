@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @ToString
 //@Component
 @Table( name = "COMMANDE")
@@ -30,19 +30,19 @@ public class Commande implements Serializable {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	@NonNull
+	//@NonNull
 	private int idCommande;
 
-	@NonNull
+	//@NonNull
 	private float total;
 
 	@Enumerated(EnumType.STRING)
-	@NonNull
+	//@NonNull
 	private OrderStatus etat;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date")
-	@NonNull
+	//@NonNull
 	private Date dateOrder;
 
 	@OneToOne

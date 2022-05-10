@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
+//@RequiredArgsConstructor
 @RequestMapping("/Delivery")
 public class DeliveryController {
     @Autowired
     DeliveryService deliveryService;
+
 
     //@GetMapping("/Delivery")
     @GetMapping("/all")

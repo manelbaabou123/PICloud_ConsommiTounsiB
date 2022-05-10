@@ -1,11 +1,10 @@
 package com.example.consomi.entity;
 
 
+import com.example.consomi.enumerated.DeliveryStatus;
 import com.example.consomi.enumerated.MeansOfTransportDelivery;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
-import com.example.consomi.enumerated.DeliveryStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,11 +12,13 @@ import java.util.Date;
 
 
 @Entity
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 //@Component
 @Table(name = "DELIVERY")
 public class Delivery implements Serializable {
@@ -35,6 +36,8 @@ public class Delivery implements Serializable {
 	private Date DeliveryDate = new Date(System.currentTimeMillis());
 
 	private String ville;
+
+	//private String imageUrl;
 
 	@Column(name = "address")
 	private String addressLivraison;

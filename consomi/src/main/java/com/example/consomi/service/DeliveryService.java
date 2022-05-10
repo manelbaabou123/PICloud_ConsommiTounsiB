@@ -8,6 +8,7 @@ public interface DeliveryService {
 
     Delivery AddDelivery(Delivery delivery);
     void DeleteDelivery(Long idDelivery);
+    //Boolean DeleteDeliveryb(Long idDelivery);
     Delivery UpdateDelivery(Delivery delivery);
     List<Delivery> getAllDelivery();
     public String getDeliveryById(Long idDelivery);
@@ -21,6 +22,8 @@ public interface DeliveryService {
 
     public long getTempsAttenteDelivery(Long idDelivery);
     public long getTempsAttenteMoyen();
+
+    //Collection<Delivery>list(int limit);
 
 
 }

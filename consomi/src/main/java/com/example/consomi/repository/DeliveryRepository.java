@@ -2,6 +2,7 @@ package com.example.consomi.repository;
 
 import com.example.consomi.entity.Delivery;
 import com.example.consomi.enumerated.DeliveryStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DeliveryRepository extends CrudRepository<Delivery, Long> {
+public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
     @Query("select d from Delivery d where d.etat != :done and d.livreur.id = :idLivreur ")
     List<Delivery> getCurrentDeliveriesForDeliveryMen(@Param("done") DeliveryStatus etat, @Param("idLivreur") int id);
 
