@@ -1,44 +1,81 @@
 package com.example.consomi.entity;
 
-import lombok.*;
-
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Table( name = "CART")
-public class Cart implements Serializable{
+@Table(name = "carts")
+public class Cart {
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private long idCart;
+		
+		@Column(name ="quantite")
+		private int quantite;
+		
+		@Column(name ="total")
+		private float total;
+		
+		@Temporal(TemporalType.DATE)
+		@Column(name = "date_Creation")
+		private Date dateCreation;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	private int idCart;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_Creation")
-	private Date dateCreation;
+		
+		
+		
+		
+		public Cart() {
+			super();
+			
+		}
 
-	private int quantite;
+		public Cart(int quantite, float total, Date dateCreation) {
+			super();
+			this.quantite = quantite;
+			this.total = total;
+			this.dateCreation = dateCreation;
+		}
 
-	private float total;
+		public long getIdCart() {
+			return idCart;
+		}
 
-	@OneToOne
-	private Product produit;
+		public void setIdCart(long idCart) {
+			this.idCart = idCart;
+		}
 
-	@ManyToOne
-	@JoinColumn(name="idCommande")
-	private Commande commande;
-	
+		public int getQuantite() {
+			return quantite;
+		}
 
-	
+		public void setQuantite(int quantite) {
+			this.quantite = quantite;
+		}
+
+		public float getTotal() {
+			return total;
+		}
+
+		public void setTotal(float total) {
+			this.total = total;
+		}
+
+		public Date getDateCreation() {
+			return dateCreation;
+		}
+
+		public void setDateCreation(Date dateCreation) {
+			this.dateCreation = dateCreation;
+		}
+
 
 }
+
