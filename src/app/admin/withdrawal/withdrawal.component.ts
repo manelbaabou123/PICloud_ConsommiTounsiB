@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
+import { EventService } from 'src/app/services/event.service';
+import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AddeventComponent } from '../addevent/addevent.component';
 
 @Component({
   selector: 'app-withdrawal',
@@ -20,16 +23,48 @@ export class WithdrawalComponent implements OnInit {
   public page: any;
   public count = 6;
 
-  constructor() {
-    
+  public Event :any ;
+  constructor(private _eventService : EventService,private dialag:MatDialog) {
+
    }
 
   ngOnInit(): void {
+    this.getEvent();
   }
+
+  getEvent(){
+    this._eventService.getEvent().subscribe(res => {
+      console.log('sa :' , res);
+      this.Event = res;
+    })
+  }
+
 
   public onPageChanged(event){
     this.page = event; 
     window.scrollTo(0,0); 
+  }
+  
+
+  addEvent(){
+    this._eventService.addEvent().subscribe(res => {     
+      this.getEvent();
+    })
+  }
+
+  DeleteEvent(idEvent){
+    
+    this._eventService.DeleteEvent(idEvent).subscribe(res => {     
+      this.getEvent();
+    })
+  }
+
+  open(){
+    this.dialag.open(AddeventComponent,{
+      width :'50%'
+    }).afterClosed().subscribe(val=>{
+      this.getEvent()
+    })
   }
 
 }

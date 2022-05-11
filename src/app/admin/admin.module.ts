@@ -14,7 +14,9 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { FullScreenComponent } from './components/fullscreen/fullscreen.component'; 
 import { MessagesComponent } from './components/messages/messages.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { EventComponent } from './event/event.component'; 
+import { EventComponent } from './event/event.component';
+import { AddeventComponent } from './addevent/addevent.component'; 
+import { FormsModule } from '@angular/forms';
 
 export const routes = [ 
   { 
@@ -44,13 +46,15 @@ export const routes = [
     FullScreenComponent,
     MessagesComponent,
     BreadcrumbComponent,
-    EventComponent
+    EventComponent,
+    AddeventComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
     InputFileModule.forRoot(config),
+    FormsModule,
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,18 @@
+
+
+<form>
+    <label for="fname">Titre :</label>
+    <input  [(ngModel)]="event.titre" type="text" id="fname" name="fname">
+
+    <label  for="lname">Cout :</label>
+    <input [(ngModel)]="event.cout" type="text" id="lname" name="lname">
+
+    <label type="number" for="lname">date :</label>
+    <input [(ngModel)]="event.dateEvent" type="text" id="lname" name="lname">
+
+    <label for="lname">Description :</label>
+    <input [(ngModel)]="event.description" type="text" id="lname" name="lname">
+    
+  </form>
+  <button (click)=" addEventWitrhDetails()" mat-dialog-close>add Event</button>
+

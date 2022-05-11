@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { EventService } from 'src/app/services/event.service';
 import { montly_sales } from '../dashboard.data';
 
 @Component({
@@ -19,10 +20,16 @@ export class MontlySalesComponent implements OnInit {
   @ViewChild('resizedDiv') resizedDiv:ElementRef;
   public previousWidthOfResizedDiv:number = 0; 
   
-  constructor() { }
+  constructor(private service:EventService) { }
 
   ngOnInit(){
-    this.data = montly_sales;  
+    console.log("hhhhhhh")
+
+    this.service.geteventtaux().subscribe(
+      Response=>{
+      this.data=Response;
+      console.log("hhhhhhh"+Response)
+    })
   }
   
   public onSelect(event) {
@@ -30,10 +37,15 @@ export class MontlySalesComponent implements OnInit {
   }
 
   ngAfterViewChecked() {    
-    if(this.previousWidthOfResizedDiv != this.resizedDiv.nativeElement.clientWidth){
-      setTimeout(() => this.data = [...montly_sales] );
-    }
-    this.previousWidthOfResizedDiv = this.resizedDiv.nativeElement.clientWidth;
+  
   }
+
+gettauxevent(){
+  return this.service.geteventtaux().subscribe(
+    Response=>{
+    this.data=Response;
+    console.log("hhhhhhh"+Response)
+  })
+}
 
 }

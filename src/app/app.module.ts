@@ -33,7 +33,9 @@ import { AppInterceptor } from './theme/utils/app-interceptor';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import {AccumulationChartModule , PieSeriesService, AccumulationDataLabelService,AccumulationLegendService,AccumulationTooltipService} from '@syncfusion/ej2-angular-charts';
 
 @NgModule({
    imports: [
@@ -42,6 +44,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NgxSpinnerModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
     }),
@@ -53,7 +56,8 @@ import { FormsModule } from '@angular/forms';
       }
     }),
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AccumulationChartModule
   ],
   declarations: [
     AppComponent,
@@ -67,12 +71,14 @@ import { FormsModule } from '@angular/forms';
     FooterComponent    
   ], 
   providers: [
+    PieSeriesService,AccumulationDataLabelService,AccumulationLegendService,AccumulationTooltipService,
     AppSettings,
     AppService,   
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
     { provide: MAT_MENU_SCROLL_STRATEGY, useFactory: menuScrollStrategy, deps: [Overlay] },
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
-  ],
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
+
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

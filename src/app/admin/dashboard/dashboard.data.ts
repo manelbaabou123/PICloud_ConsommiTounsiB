@@ -163,7 +163,7 @@ export const refunds = [
 export const montly_sales = [
   {
     "name": "Offline Stores",
-    "value": 178
+    "value": 500
   },
   {
     "name": "Digital Stores",
